@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('sender_name');
             $table->string('sender_email');
             $table->text('content');  
-            $table->boolean('is_read');
+            $table->boolean('read');
             $table->softDeletes();
             $table->timestamps();
         });
