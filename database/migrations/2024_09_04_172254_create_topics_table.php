@@ -19,7 +19,7 @@ return new class extends Migration
             $table->boolean('published');
             $table->string('image');
             $table->integer('no_of_views')->default(0);
-            $table->foreignId('category_id');
+            $table->foreignId('category_id')->constrained('categories');
             $table->softDeletes();
             $table->timestamps();
         });
