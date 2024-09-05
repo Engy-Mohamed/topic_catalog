@@ -3,8 +3,14 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Category;
+use App\Models\Message;
+use App\Models\Testimonial;
+use App\Models\Topic;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +19,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(10)->create();
+        Category::factory(5)->has(Topic::factory()->count(5))->create();
+        Message::factory(10)->create();
+        Testimonial::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+       /*  User::factory()->create([
+            'user_name' => 'Admin',
+            'first_name' => 'Admin_first_name',
+            'last_name' => 'Admin_last_name',
+            'email' => 'admin@topic_catalog.com',
+            'password' => Hash::make('password'),
+            'remember_token' => 'abcdefghij',
+        ]); */
     }
 }
