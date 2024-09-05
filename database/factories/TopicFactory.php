@@ -23,6 +23,8 @@ class TopicFactory extends Factory
             'trending' => fake()->numberBetween(0, 1), 
             'image' => basename(fake()->image(public_path('assets\images\topics'))),
             'no_of_views' => fake()->numberBetween(0, 20), 
+            /*category_id : we don't need it due to adding the topics as 
+            part of the category in DatabaseSeeder*/
         ];
     }
 }
