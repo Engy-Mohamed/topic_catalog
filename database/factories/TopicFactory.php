@@ -17,7 +17,12 @@ class TopicFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'topic_title' => fake()->company(),
+            'content' => fake()->paragraph(),
+            'published' => fake()->numberBetween(0, 1), 
+            'trending' => fake()->numberBetween(0, 1), 
+            'image' => basename(fake()->image(public_path('assets\images\topics'))),
+            'no_of_views' => fake()->numberBetween(0, 20), 
         ];
     }
 }
