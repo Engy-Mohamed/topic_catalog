@@ -17,4 +17,8 @@ class Category extends Model
     {
         return $this->hasMany(Topic::class);
     }
+    public function no_of_topics()
+    {
+        return $this->hasMany(Topic::class)->count();
+    }
 }

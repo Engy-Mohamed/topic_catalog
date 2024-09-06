@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -11,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return "index";
+        $categories = Category::get();
+        return view('admin/categories', compact('categories'));
     }
 
     /**
@@ -57,8 +59,14 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        return "destroy";
+
+        if ($category->no_of_topics()) {
+            return redirect()->route('categories.index')->with('message', "Can't delete because it has topics in it");
+        }
+
+        $category->delete();
+        return redirect()->route('categories.index');
     }
 }

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 //users routes
-Route::resource('users', UserController::class)->except(['show']);
+Route::resource('users', UserController::class)->except(['show','destroy']);
 //testimonials routes
 Route::resource('testimonials', TestimonialController::class)->except(['show']);
 //categories routes
