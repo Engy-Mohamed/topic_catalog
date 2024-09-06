@@ -31,6 +31,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@topic_catalog.com',
             'password' => Hash::make('password'),
             'remember_token' => 'abcdefghij',
+            'email_verified_at' => now(),
+            'active' => '1'
         ]); */
     }
 }
