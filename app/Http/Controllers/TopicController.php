@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Topic;
+use App\Models\Category;
+use App\Traits\Common;
 
 class TopicController extends Controller
 {
+    use Common;
+
     public function index()
     {
         $topics = Topic::with('category')->get();
@@ -18,7 +22,8 @@ class TopicController extends Controller
      */
     public function create()
     {
-        return "create";
+        $categories = Category::get();
+        return view('admin/add_topic', compact('categories'));
     }
 
     /**
@@ -26,7 +31,21 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        return "store";
+        $data = $request->validate([
+            'topic_title' => 'required|string|max:255',
+            'content' => 'required|string|max:1000',
+            'image' => 'required|mimes:png,jpg,jpeg,svg|max:2048',
+            'category_id' => 'required|exists:categories,id'
+        ]);
+
+        $file_name = $this->uploadFile($request['image'], 'assets\images\topics');
+
+        $data['image'] = $file_name;
+        $data['published'] = isset($request['published']);
+        $data['trending'] = isset($request['trending']);
+        Topic::create($data);
+
+        return redirect()->route('topics.index');
     }
 
     /**
