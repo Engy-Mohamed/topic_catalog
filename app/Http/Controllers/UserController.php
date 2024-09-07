@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -21,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return "create";
+        return view('admin/add_user');
     }
 
     /**
@@ -29,9 +30,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return "store";
-    }
+        $data = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'user_name' => 'required|string|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
 
+        $data['active'] = true;
+        $data['email_verified_at'] = now();
+        $data['password'] = Hash::make($data['password']);
+
+        user::create($data);
+
+        return redirect()->route('users.index');
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -48,6 +62,5 @@ class UserController extends Controller
     {
         return "update";
     }
-
 
 }
