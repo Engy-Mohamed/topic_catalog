@@ -33,7 +33,7 @@ class TopicController extends Controller
     {
         $data = $request->validate([
             'topic_title' => 'required|string|max:255',
-            'content' => 'required|string|max:1000',
+            'content' => 'required|string|max:3000',
             'image' => 'required|mimes:png,jpg,jpeg,svg|max:2048',
             'category_id' => 'required|exists:categories,id'
         ]);
@@ -51,9 +51,9 @@ class TopicController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Topic $topic)
     {
-        //
+        return view('admin/topic_details', compact('topic'));
     }
 
     /**
