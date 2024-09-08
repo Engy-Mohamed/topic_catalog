@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Topic;
 use App\Models\Category;
+use App\Models\Topic;
 use App\Traits\Common;
+use Illuminate\Http\Request;
 
 class TopicController extends Controller
 {
@@ -35,7 +35,7 @@ class TopicController extends Controller
             'topic_title' => 'required|string|max:255',
             'content' => 'required|string|max:3000',
             'image' => 'required|mimes:png,jpg,jpeg,svg|max:2048',
-            'category_id' => 'required|exists:categories,id'
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $file_name = $this->uploadFile($request['image'], 'assets\images\topics');
@@ -59,9 +59,10 @@ class TopicController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Topic $topic)
     {
-        return "edit";
+        $categories = Category::get();
+        return view('admin/edit_topic', compact('topic', 'categories'));
     }
 
     /**
@@ -69,7 +70,22 @@ class TopicController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "update";
+        $data = $request->validate([
+            'topic_title' => 'required|string|max:255',
+            'content' => 'required|string|max:3000',
+            'image' => 'mimes:png,jpg,jpeg,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
+            'published' => 'required:boolean',
+            'trending' => 'required:boolean',
+        ]);
+        if (isset($data['image'])) {
+            $file_name = $this->uploadFile($request['image'], 'assets\images\topics');
+            $data['image'] = $file_name;
+        }
+
+        Topic::where('id', $id)->update($data);
+
+        return redirect()->route('topics.index');
     }
 
     /**

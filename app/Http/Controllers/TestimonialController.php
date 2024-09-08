@@ -57,9 +57,9 @@ class TestimonialController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Testimonial $testimonial)
     {
-        return "edit";
+        return view('admin/edit_testimonial', compact('testimonial'));
     }
 
     /**
@@ -67,7 +67,20 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "update";
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'content' => 'required|string|max:1000',
+            'image' => 'mimes:png,jpg,jpeg,svg|max:2048',
+            'published' => 'required:boolean'
+        ]);
+
+        if (isset($data['image'])) {
+            $file_name = $this->uploadFile($request['image'], 'assets\images\testimonials');
+            $data['image'] = $file_name;
+        }
+
+        Testimonial::where('id', $id)->update($data);
+        return redirect()->route('testimonials.index');
     }
 
     /**
