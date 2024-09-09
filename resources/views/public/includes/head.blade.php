@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Topic Listing Bootstrap 5 Template</title>
+    <title>Topic Listing {{$page_name}}</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

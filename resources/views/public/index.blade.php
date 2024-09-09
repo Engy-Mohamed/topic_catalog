@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-@include('public.includes.head')
+@include('public.includes.head',['page_name'=>'Bootstrap 5 Template'])
 
 <body id="top">
 
@@ -28,7 +28,7 @@
     </main>
 
     @include('public.includes.footer')
-    @include('public.includes.js_lib')
+    @include('public.includes.jslib')
 
 
     
