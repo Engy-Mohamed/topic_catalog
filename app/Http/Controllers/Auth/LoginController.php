@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -20,17 +21,17 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-    use AuthenticatesUsers {
-        login as protected baselogin;
-    }
-
- /*    public function login(Request $request)
-    {
-        
-    } */
     public function username()
     {
         return 'user_name';
+    }
+    protected function credentials(Request $request)
+    {
+        return [
+            'user_name' => request()->user_name,
+            'password' => request()->password,
+            'active' => 1
+        ];
     }
 
     /**
