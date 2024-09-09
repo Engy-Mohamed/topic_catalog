@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(6)->create();
         Category::factory(4)->has(Topic::factory()->count(5))->create();
-        Message::factory(8)->create();
+        Message::factory(10)->create();
         Testimonial::factory(6)->create();
 
        /*  User::factory()->create([

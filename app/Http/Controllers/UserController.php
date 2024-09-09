@@ -50,9 +50,9 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        return "edit";
+        return view('admin/edit_user', compact('user'));
     }
 
     /**
@@ -60,7 +60,21 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "update";
+        $data = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'user_name' => 'required|string|max:255|unique:users,user_name,' . $id,
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:8',
+            'active' => 'required:boolean',
+        ]);
+
+        if (isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        } else {unset($data['password']);}
+
+        User::where('id', $id)->update($data);
+        return redirect()->route('users.index');
     }
 
 }

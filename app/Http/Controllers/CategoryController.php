@@ -30,7 +30,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'category_name' => 'required|string|min:2|max:100',
+            'category_name' => 'required|string|min:2|max:100|unique:categories',
         ]);
         Category::create($data);
         return redirect()->route('categories.index');
@@ -47,9 +47,9 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        return "edit";
+        return view('admin/edit_category', compact('category'));
     }
 
     /**
@@ -57,7 +57,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "update";
+        $data = $request->validate([
+            'category_name' => 'required|string|min:2|max:100|unique:categories,category_name,'.$id,
+        ]);
+        Category::where('id', $id)->update($data);
+        return redirect()->route('categories.index');
     }
 
     /**

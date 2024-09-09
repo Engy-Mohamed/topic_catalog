@@ -25,10 +25,13 @@ Route::resource('categories', CategoryController::class)->except(['show']);
 //topics routes
 Route::resource('topics', TopicController::class);
 //messages routes
-Route::controller(MessageController::class)->prefix('messages')->group(function () {
+Route::resource('messages', MessageController::class)->only(['index', 'show', 'destroy']);
+/* Route::controller(MessageController::class)->prefix('messages')->group(function () {
     Route::get('', 'index')->name('messages.index');
     Route::patch('{id}', 'read')->name('messages.read');
     Route::get('{id}', 'show')->name('messages.show');
     Route::delete('{id}', 'destroy')->name('messages.destroy');
-});
+}); */
 //Route::resource('books', BookController::class)->only(['create', 'store']);
+
+
