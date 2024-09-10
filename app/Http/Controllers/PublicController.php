@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Topic;
+
 class PublicController extends Controller
 {
     public function index()
@@ -18,7 +20,9 @@ class PublicController extends Controller
     }
     public function topics()
     {
-        return view('public/topics-listing');
+        $topics=Topic::where('published',1)->get();
+        $trending_topics = $topics->where('trending',1)->sortByDesc('created_at')->take(2);
+        return view('public/topics-listing', compact('topics','trending_topics'));
     }
     public function topics_detail(string $id)
     {

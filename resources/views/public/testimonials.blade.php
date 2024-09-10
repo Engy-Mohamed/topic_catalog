@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-   @include('public.includes.head',['page_name'=>'Our Client Says'])
+   @include('public.includes.head',['page_name'=>'Topic Listing Our Client Says'])
     
     <body class="topics-listing-page" id="top">
 
