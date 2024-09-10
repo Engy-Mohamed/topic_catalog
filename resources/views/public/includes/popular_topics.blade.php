@@ -17,7 +17,7 @@
 
                                             <p class="mb-0">Topic Listing includes home, listing, detail and contact pages. Feel free to modify this template for your custom websites.</p>
 
-                                            <a href="topics-detail.html" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
+                                            <a href="{{route('topics_detail', $topics[0]->id)}}" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
                                         </div>
 
                                         <span class="badge bg-design rounded-pill ms-auto">14</span>
@@ -35,7 +35,7 @@
 
                                             <p class="mb-0">Visit TemplateMo website to download free CSS templates. Lorem ipsum dolor, sit amet consectetur adipisicing elit animi necessitatibus</p>
 
-                                            <a href="topics-detail.html" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
+                                            <a href="{{route('topics_detail',$topics[0]->id)}}" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
                                         </div>
 
                                         <span class="badge bg-advertising rounded-pill ms-auto">30</span>
@@ -53,7 +53,7 @@
 
                                             <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit animi necessitatibus</p>
 
-                                            <a href="topics-detail.html" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
+                                            <a href="{{route('topics_detail',$topics[0]->id)}}" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
                                         </div>
 
                                         <span class="badge bg-music rounded-pill ms-auto">20</span>

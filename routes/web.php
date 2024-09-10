@@ -10,7 +10,7 @@ Route::controller(PublicController::class)->group(function () {
     Route::get('contact', 'contact')->name('contact');
     Route::get('testimonials', 'testimonials')->name('testimonials');
     Route::prefix('topics')->group(function () {
-        Route::get('{id}', 'topic_details')->name('topic_details');
+        Route::get('{id}', 'topics_detail')->name('topics_detail');
         Route::get('', 'topics')->name('topics');
         });
 }); 
