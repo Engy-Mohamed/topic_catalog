@@ -1,8 +1,7 @@
-<!doctype html>
-<html lang="en">
+@extends('public.layouts.main',['page_name'=>'Topic Detail Page'])
 
-    @include('public.includes.head',['page_name'=>'Topic Detail Page'])
-    
+@section('content')
+
     <body id="top">
 
         <main>
@@ -17,9 +16,8 @@
             
         </main>
 		
-        @include('public.includes.footer')
-      
-        @include('public.includes.jslib_pages')
+@endsection()
 
-    </body>
-</html>
+@section('java_scripts')
+    @include('public.includes.jslib_pages')
+@endsection()
