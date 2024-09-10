@@ -18,7 +18,7 @@ class TestimonialFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'content' => fake()->text(),
+            'content' => fake()->text(500),
             'image' => basename(fake()->image(public_path('assets\images\testimonials'))),
             'published' => fake()->numberBetween(0, 1), 
         ];

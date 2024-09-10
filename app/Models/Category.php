@@ -21,4 +21,8 @@ class Category extends Model
     {
         return $this->hasMany(Topic::class)->count();
     }
+    public function latest_topics()
+    {
+        return $this->hasMany(Topic::class)->where('published',1)->latest()->take(3);
+    }
 }

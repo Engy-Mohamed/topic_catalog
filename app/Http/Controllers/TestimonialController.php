@@ -33,7 +33,7 @@ class TestimonialController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
-            'content' => 'required|string|max:1000',
+            'content' => 'required|string|max:500',
             'image' => 'required|mimes:png,jpg,jpeg,svg|max:2048',
         ]);
 
@@ -69,7 +69,7 @@ class TestimonialController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
-            'content' => 'required|string|max:1000',
+            'content' => 'required|string|max:500',
             'image' => 'mimes:png,jpg,jpeg,svg|max:2048',
             'published' => 'required:boolean'
         ]);

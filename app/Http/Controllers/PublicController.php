@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Testimonial;
 use App\Models\Topic;
 
 class PublicController extends Controller
 {
     public function index()
     {
-        return view('public/index');
+        $testimonials = Testimonial::where('published',1)->latest()->take(3)->get();
+        return view('public/index', compact('testimonials'));
     }
     public function testimonials()
     {
-        return view('public/testimonials');
+        $testimonials = Testimonial::where('published',1)->get();
+        return view('public/testimonials', compact('testimonials'));
     }
     public function contact()
     {
