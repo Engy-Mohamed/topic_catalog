@@ -7,11 +7,11 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{route('index')}}">Homepage</a></li>
 
-                                    <li class="breadcrumb-item active" aria-current="page">{{$header_name}}</li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{$page_header}}</li>
                                 </ol>
                             </nav>
 
-                            <h2 class="text-white">{{$header_name}}</h2>
+                            <h2 class="text-white">{{$page_header}}</h2>
                         </div>
 
                     </div>

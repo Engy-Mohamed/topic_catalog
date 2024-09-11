@@ -1,23 +1,20 @@
-<!doctype html>
-<html lang="en">
+@extends('public.layouts.main',['page_name'=>'Topic Listing Our Client Says'])
 
-   @include('public.includes.head',['page_name'=>'Topic Listing Our Client Says'])
-    
+@section('content')
     <body class="topics-listing-page" id="top">
 
         <main>
 
             @include('public.includes.navbar_pages')
 
-            @include('public.includes.site_header',['header_name'=>'Testimonials'])
+            @include('public.includes.site_header',['page_header'=>'Testimonials'])
 
             @include('public.includes.testimonials_section')
 
-           
-        </main>
-        @include('public.includes.footer')
-      
-        @include('public.includes.jslib_pages')
 
-    </body>
-</html>
+        </main>
+@endsection()
+
+@section('java_scripts')
+    @include('public.includes.jslib_pages')
+@endsection()

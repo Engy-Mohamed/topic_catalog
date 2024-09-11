@@ -1,7 +1,6 @@
-<!doctype html>
-<html lang="en">
+@extends('public.layouts.main',['page_name'=>'Topic Listing Bootstrap 5 Template'])
 
-@include('public.includes.head',['page_name'=>'Bootstrap 5 Template'])
+@section('content')
 
 <body id="top">
 
@@ -27,12 +26,8 @@
         
     </main>
 
-    @include('public.includes.footer')
+@endsection()
+
+@section('java_scripts')
     @include('public.includes.jslib')
-
-
-    
-
-</body>
-
-</html>
+@endsection()
