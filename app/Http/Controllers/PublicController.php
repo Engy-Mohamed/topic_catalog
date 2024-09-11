@@ -30,6 +30,12 @@ class PublicController extends Controller
     }
     public function topics_detail(string $id)
     {
-        return view('public/topics-detail');
+        $topic = Topic::with('category')->where('published',1)->findOrFail($id);
+        return view('public/topics-detail', compact('topic'));
+    }
+    public function add_view(string $id)
+    {
+       Topic::where('id', $id)->increment('no_of_views');
+       return redirect()->route('topics_detail',$id);
     }
 }
