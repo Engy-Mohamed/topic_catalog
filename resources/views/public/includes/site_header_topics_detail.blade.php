@@ -17,8 +17,8 @@
                                 <a href="#topics-detail" class="btn custom-btn custom-border-btn smoothscroll me-4">Read More</a>
                                  
                                 <form action="{{route('add_view',$topic['id'])}}" method="post">
-                                  @csrf
-                                  @method('patch')
+                                   @csrf
+                                   @method('patch')
                                   <button type="submit" class="btn btn-link m-0 p-0 custom-icon bi-bookmark smoothscroll">
                                   </button>
                                   </form>

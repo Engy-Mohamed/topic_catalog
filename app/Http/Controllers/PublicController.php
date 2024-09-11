@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
 use App\Models\Topic;
+use Illuminate\View\View;
 
 class PublicController extends Controller
 {
@@ -22,10 +23,10 @@ class PublicController extends Controller
     {
         return view('public/contact');
     }
-    public function topics()
+    public function topics():view
     {
-        $topics=Topic::where('published',1)->get();
-        $trending_topics = $topics->where('trending',1)->sortByDesc('created_at')->take(2)->values();
+        $topics = Topic::where('published',1)->paginate(3);
+        $trending_topics = Topic::where('published',1)->where('trending',1)->latest()->take(2)->get();
         return view('public/topics-listing', compact('topics','trending_topics'));
     }
     public function topics_detail(string $id)
@@ -35,7 +36,7 @@ class PublicController extends Controller
     }
     public function add_view(string $id)
     {
-       Topic::where('id', $id)->increment('no_of_views');
+       Topic::where('id', $id)->where('published',1)->increment('no_of_views');
        return redirect()->route('topics_detail',$id);
     }
 }
