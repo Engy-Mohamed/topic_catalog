@@ -18,7 +18,7 @@ class TopicFactory extends Factory
     {
         return [
             'topic_title' => fake()->company(),
-            'content' => fake()->paragraph(),
+            'content' => fake()->text(3000),
             'published' => fake()->numberBetween(0, 1), 
             'trending' => fake()->numberBetween(0, 1), 
             'image' => basename(fake()->image(public_path('assets\images\topics'))),

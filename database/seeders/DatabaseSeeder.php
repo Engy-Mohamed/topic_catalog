@@ -19,12 +19,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(6)->create();
-        Category::factory(4)->has(Topic::factory()->count(5))->create();
+ /*        User::factory(6)->create();
+        Category::factory(6)->has(Topic::factory()->count(6))->create();
         Message::factory(10)->create();
-        Testimonial::factory(6)->create();
+        Testimonial::factory(6)->create(); */
 
-       /*  User::factory()->create([
+        User::factory()->create([
             'user_name' => 'Admin',
             'first_name' => 'Admin_first_name',
             'last_name' => 'Admin_last_name',
@@ -33,6 +33,6 @@ class DatabaseSeeder extends Seeder
             'remember_token' => 'abcdefghij',
             'email_verified_at' => now(),
             'active' => '1'
-        ]); */
+        ]); 
     }
 }

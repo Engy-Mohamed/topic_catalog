@@ -12,6 +12,7 @@ Route::controller(PublicController::class)->group(function () {
     Route::prefix('topics')->group(function () {
         Route::get('{id}', 'topics_detail')->name('topics_detail');
         Route::get('', 'topics')->name('topics');
+        Route::patch('{id}/add_view', 'add_view')->name('add_view');
         });
 }); 
 
