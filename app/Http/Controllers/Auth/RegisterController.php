@@ -76,12 +76,4 @@ class RegisterController extends Controller
             'active' => 0
         ]);
     }
-    protected function credentials(Request $request)
-    {
-        return [
-            'user_name' => request()->user_name,
-            'password' => request()->password,
-            'active' => 1
-        ];
-    }
 }
