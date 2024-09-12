@@ -46,7 +46,7 @@
 						LOGIN
 						<img src='{{asset("assets/admin/images/arrow-sm-right-svgrepo-com.svg")}}' alt="">
 					</button>
-					<a href="register.html" class="fw-semibold fs-6 text-decoration-none text-dark">New User?</a>
+					<a href="{{ route('register') }}" class="fw-semibold fs-6 text-decoration-none text-dark">New User?</a>
 				</form>
 			</div>
 		</div>

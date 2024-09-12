@@ -20,7 +20,7 @@ class MessageFactory extends Factory
             'message_subject' => fake()->company(),
             'sender_name' => fake()->name(),
             'sender_email' => fake()->safeEmail(),
-            'content' => fake()->text(500),
+            'content' => fake()->text(1000),
             'read' => fake()->numberBetween(0, 1),         
         ];
     }
