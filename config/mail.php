@@ -2,6 +2,15 @@
 
 return [
 
+        /*
+    |--------------------------------------------------------------------------
+    | Contact us to address
+    |--------------------------------------------------------------------------
+    | You may wish to specify the email address you want to send the countact us message to
+    */
+
+    'to_contact_us' => env('MAIL_TO_CONTACTUS', 'hr@example.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Default Mailer

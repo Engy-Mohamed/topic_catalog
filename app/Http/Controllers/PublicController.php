@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\Message;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Mail\contact_message;
+use Illuminate\Support\Facades\Mail;
 
 class PublicController extends Controller
 {
@@ -54,7 +56,9 @@ class PublicController extends Controller
         $data['read']= 0;
         
         Message::create($data);
+        $to_email = config('mail.to_contact_us');
+        Mail::to($to_email )->send(new contact_message($data));
 
-        return redirect()->route('contact');
+        return redirect()->route('contact')->with('message','Thank you for contacting us');
     }
 }
