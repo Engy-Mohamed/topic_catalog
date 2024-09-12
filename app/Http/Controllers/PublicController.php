@@ -17,7 +17,7 @@ class PublicController extends Controller
     {
         $testimonials = Testimonial::where('published',1)->latest()->take(3)->get();
         $featured_topics = Topic::where('published',1)->orderBy('no_of_views','DESC')->take(2)->get();
-        $categories = Category::with('latest_topics')->take(5)->get();
+        $categories = Category::with('latest_topics')->withcount('published_topics')->orderBy('published_topics_count', 'desc')->take(5)->get();
         return view('public/index', compact('testimonials','featured_topics','categories'));
     }
     public function testimonials()

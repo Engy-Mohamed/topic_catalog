@@ -71,7 +71,7 @@ class CategoryController extends Controller
     {
 
         if ($category->no_of_topics()) {
-            return redirect()->route('categories.index')->with('message', "Can't delete because it has topics in it");
+            return redirect()->route('categories.index')->with('message', "Can't delete because it has related topics");
         }
 
         $category->delete();
