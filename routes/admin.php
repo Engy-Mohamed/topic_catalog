@@ -17,21 +17,15 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 //users routes
-Route::resource('users', UserController::class)->except(['show','destroy']);
+Route::resource('users', UserController::class)->except(['show','destroy'])->middleware('active');
 //testimonials routes
-Route::resource('testimonials', TestimonialController::class)->except(['show']);
+Route::resource('testimonials', TestimonialController::class)->except(['show'])->middleware('active');
 //categories routes
-Route::resource('categories', CategoryController::class)->except(['show']);
+Route::resource('categories', CategoryController::class)->except(['show'])->middleware('active');
 //topics routes
-Route::resource('topics', TopicController::class);
+Route::resource('topics', TopicController::class)->middleware('active');
 //messages routes
-Route::resource('messages', MessageController::class)->only(['index', 'show', 'destroy']);
-/* Route::controller(MessageController::class)->prefix('messages')->group(function () {
-    Route::get('', 'index')->name('messages.index');
-    Route::patch('{id}', 'read')->name('messages.read');
-    Route::get('{id}', 'show')->name('messages.show');
-    Route::delete('{id}', 'destroy')->name('messages.destroy');
-}); */
-//Route::resource('books', BookController::class)->only(['create', 'store']);
+Route::resource('messages', MessageController::class)->only(['index', 'show', 'destroy'])->middleware('active');
+
 
 

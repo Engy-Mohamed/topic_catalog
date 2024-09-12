@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -22,13 +23,14 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'admin/users';
 
     /**
      * Create a new controller instance.
@@ -71,6 +73,15 @@ class RegisterController extends Controller
             'user_name' => $data['user_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'active' => 0
         ]);
+    }
+    protected function credentials(Request $request)
+    {
+        return [
+            'user_name' => request()->user_name,
+            'password' => request()->password,
+            'active' => 1
+        ];
     }
 }

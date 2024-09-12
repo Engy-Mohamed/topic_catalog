@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Testimonial;
 use App\Models\Topic;
 use App\Models\Category;
+use App\Models\Message;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
@@ -40,5 +42,19 @@ class PublicController extends Controller
     {
        Topic::where('id', $id)->where('published',1)->increment('no_of_views');
        return redirect()->route('topics_detail',$id);
+    }
+    public function send_message(Request $request)
+    {
+        $data = $request->validate([
+            'sender_name' => 'required|string|max:255',
+            'message_subject' => 'required|string|max:255',
+            'sender_email' => 'required|string|email|max:255',
+            'content' => 'required|string|max:1000',
+        ]);
+        $data['read']= 0;
+        
+        Message::create($data);
+
+        return redirect()->route('contact');
     }
 }
