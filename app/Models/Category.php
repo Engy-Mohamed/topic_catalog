@@ -19,10 +19,14 @@ class Category extends Model
     }
     public function no_of_topics()
     {
-        return $this->hasMany(Topic::class)->count();
+        return $this->topics()->count();
+    }
+    public function published_topics()
+    {
+        return $this->topics()->where('published',1);
     }
     public function latest_topics()
     {
-        return $this->hasMany(Topic::class)->where('published',1)->latest()->take(3);
+        return $this->published_topics()->latest()->take(3);
     }
 }
