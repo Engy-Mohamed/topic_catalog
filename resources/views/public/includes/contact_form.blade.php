@@ -5,6 +5,9 @@
                         <div class="col-lg-12 col-12">
                             <h3 class="mb-4 pb-2">We'd love to hear from you</h3>
                         </div>
+                        @if (session('message'))
+                        <div class="alert alert-success">{{ session('message') }}</div>
+                        @endif
 
                         <div class="col-lg-6 col-12">
                             <form action="" method="post" class="custom-form contact-form" role="form">
