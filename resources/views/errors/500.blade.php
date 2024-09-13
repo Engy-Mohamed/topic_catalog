@@ -8,7 +8,7 @@
 
           @include('public.includes.navbar_pages')
 
-          @include('public.includes.404section')
+          @include('errors.includes.error_section',['error'=>'500| Internal Server Error'])
     
     </main>
 
