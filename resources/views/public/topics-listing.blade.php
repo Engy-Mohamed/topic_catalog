@@ -14,8 +14,9 @@
 
              @include('public.includes.popular_topics')
 
-
-             @include('public.includes.trending_topics')
+             @if(count($trending_topics) == 2)
+              @include('public.includes.trending_topics')
+             @endif
         </main>
 
 

@@ -10,8 +10,9 @@
         @include('public.includes.navbar')
 
         @include('public.includes.hero')
-
-        @include('public.includes.featured')
+        @if(count($featured_topics) == 2)
+         @include('public.includes.featured')
+        @endif
 
         @include('public.includes.explore')
        
