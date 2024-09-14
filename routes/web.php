@@ -4,7 +4,7 @@ use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(PublicController::class)->group(function () {
-    Route::get('', 'index')->name('index');
+    Route::get('', 'index');
     Route::get('index', 'index')->name('index');
     Route::prefix('contact')->group(function () {
         Route::get('', 'contact')->name('contact');
