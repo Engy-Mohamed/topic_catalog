@@ -11,6 +11,9 @@ class TopicController extends Controller
 {
     use Common;
 
+    /**
+     * Display a listing of the topic.
+     */
     public function index()
     {
         $topics = Topic::with('category')->get();
@@ -18,7 +21,7 @@ class TopicController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new topic.
      */
     public function create()
     {
@@ -27,7 +30,7 @@ class TopicController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created topic in storage.
      */
     public function store(Request $request)
     {
@@ -35,7 +38,7 @@ class TopicController extends Controller
             'topic_title' => 'required|string|max:255',
             'content' => 'required|string|max:3000',
             'image' => 'required|mimes:png,jpg,jpeg,svg|max:2048',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required|exists:categories,id,deleted_at,NULL',
         ]);
 
         $file_name = $this->uploadFile($request['image'], 'assets\images\topics');
@@ -49,7 +52,7 @@ class TopicController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified topic.
      */
     public function show(Topic $topic)
     {
@@ -57,7 +60,7 @@ class TopicController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified topic.
      */
     public function edit(Topic $topic)
     {
@@ -66,7 +69,7 @@ class TopicController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified topic in storage.
      */
     public function update(Request $request, string $id)
     {
@@ -74,7 +77,7 @@ class TopicController extends Controller
             'topic_title' => 'required|string|max:255',
             'content' => 'required|string|max:3000',
             'image' => 'mimes:png,jpg,jpeg,svg|max:2048',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required|exists:categories,id,deleted_at,NULL',
             'published' => 'required:boolean',
             'trending' => 'required:boolean',
         ]);
@@ -89,7 +92,7 @@ class TopicController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * soft delete the specified topic from storage.
      */
     public function destroy(string $id)
     {

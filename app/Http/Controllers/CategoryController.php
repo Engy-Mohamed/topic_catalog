@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the category.
      */
     public function index()
     {
@@ -17,7 +17,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new category.
      */
     public function create()
     {
@@ -25,27 +25,19 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created category in storage.
      */
     public function store(Request $request)
     {
         $data = $request->validate([
-            'category_name' => 'required|string|min:2|max:100|unique:categories',
+            'category_name' => 'required|string|max:100|unique:categories,category_name,NULL,id,deleted_at,NULL',
         ]);
         Category::create($data);
         return redirect()->route('categories.index');
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified category.
      */
     public function edit(Category $category)
     {
@@ -53,19 +45,19 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified category in storage.
      */
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
-            'category_name' => 'required|string|min:2|max:100|unique:categories,category_name,'.$id,
+            'category_name' => 'required|string|max:100|unique:categories,category_name,' . $id.',id,deleted_at,NULL',
         ]);
         Category::where('id', $id)->update($data);
         return redirect()->route('categories.index');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * soft delete the specified category from storage if it has not topics.
      */
     public function destroy(Category $category)
     {

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class TestimonialController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the testimonial.
      */
     use Common;
     public function index()
@@ -19,7 +19,7 @@ class TestimonialController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new testimonial.
      */
     public function create()
     {
@@ -27,7 +27,7 @@ class TestimonialController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created testimonial in storage.
      */
     public function store(Request $request)
     {
@@ -47,7 +47,7 @@ class TestimonialController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified testimonial.
      */
     public function show(string $id)
     {
@@ -55,7 +55,7 @@ class TestimonialController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified testimonial.
      */
     public function edit(Testimonial $testimonial)
     {
@@ -63,7 +63,7 @@ class TestimonialController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified testimonial in storage.
      */
     public function update(Request $request, string $id)
     {
@@ -71,7 +71,7 @@ class TestimonialController extends Controller
             'name' => 'required|string|max:255',
             'content' => 'required|string|max:500',
             'image' => 'mimes:png,jpg,jpeg,svg|max:2048',
-            'published' => 'required:boolean'
+            'published' => 'required:boolean',
         ]);
 
         if (isset($data['image'])) {
@@ -84,7 +84,7 @@ class TestimonialController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * soft delete the specified testimonial from storage.
      */
     public function destroy(string $id)
     {

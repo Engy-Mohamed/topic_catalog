@@ -6,6 +6,9 @@ use App\Models\Message;
 
 class MessageController extends Controller
 {
+    /**
+     * Display a listing of the unread and read message.
+     */
     public function index()
     {
         $messages = Message::get();
@@ -14,7 +17,7 @@ class MessageController extends Controller
         return view('admin/messages', compact('unread_messages', 'read_messages'));
     }
     /**
-     * Remove the specified resource from storage.
+     * soft delete the specified message from storage.
      */
     public function destroy(string $id)
     {
@@ -23,7 +26,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified message and Convert an unread message into a read message.
      */
     public function show(Message $message)
     {
