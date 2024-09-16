@@ -16,7 +16,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link {{$loop->first?'active':''}}" id="t{{$category['id']}}-tab" data-bs-toggle="tab"
                                 data-bs-target="#t{{$category['id']}}-tab-pane" type="button" role="tab"
-                                aria-controls="t{{$category['id']}}-tab-pane" aria-selected="{{($loop->first)?'true':'false'}}">{{Str::limit($category['category_name'],15,'...')}}</button>
+                                aria-controls="t{{$category['id']}}-tab-pane" aria-selected="{{($loop->first)?'true':'false'}}" title="{{$category['category_name']}}">{{Str::limit($category['category_name'],15,'...')}}</button>
                         </li>
                       @endforeach
                     </ul>
