@@ -38,7 +38,7 @@
                                             <a href="{{route('topics_detail',$topic['id'])}}">
                                                 <div class="d-flex">
                                                     <div>
-                                                        <h5 class="mb-2">{{$topic['topic_title']}}</h5>
+                                                        <h5 class="mb-2" title="{{$topic['topic_title']}}">{{Str::limit($topic['topic_title'],60,'...')}}</h5>
 
                                                         <p class="mb-0">{{Str::limit($topic['content'],44,'...')}}</p>
                                                     </div>

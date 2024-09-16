@@ -8,7 +8,7 @@
                             <a href="{{route('topics_detail', $featured_topics[0]['id'])}}">
                                 <div class="d-flex">
                                     <div>
-                                        <h5 class="mb-2">{{$featured_topics[0]['topic_title']}}</h5>
+                                        <h5 class="mb-2" title="{{$featured_topics[0]['topic_title']}}">{{Str::limit($featured_topics[0]['topic_title'],60,'...')}}</h5>
 
                                         <p class="mb-0">{{Str::limit($featured_topics[0]['content'],100,'...')}}</p>
                                     </div>
@@ -30,7 +30,7 @@
 
                                 <div class="custom-block-overlay-text d-flex">
                                     <div>
-                                        <h5 class="text-white mb-2">{{$featured_topics[1]['topic_title']}}</h5>
+                                        <h5 class="text-white mb-2" title="{{$featured_topics[1]['topic_title']}}">{{Str::limit($featured_topics[1]['topic_title'],60,'...')}}</h5>
 
                                         <p class="text-white">{{Str::limit($featured_topics[1]['content'],150,'...')}}</p>
 
