@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         Message::factory(10)->create();
         Testimonial::factory(6)->create(); 
  
-        /* User::factory()->create([
+        User::factory()->create([
             'user_name' => 'Admin',
             'first_name' => 'Admin_first_name',
             'last_name' => 'Admin_last_name',
@@ -33,6 +33,6 @@ class DatabaseSeeder extends Seeder
             'remember_token' => 'abcdefghij',
             'email_verified_at' => now(),
             'active' => '1'
-        ]);  */ 
+        ]);  
     }
 }
