@@ -1,1 +1,6 @@
-
+version: 2
+updates:
+  - package-ecosystem: "composer" # Use "composer" for Laravel/PHP dependencies
+    directory: "/" # The directory where the composer.json file is located, typically the root
+    schedule:
+      interval: "weekly" # Choose "daily", "weekly", or "monthly" for update frequency
